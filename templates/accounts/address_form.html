@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ action }} Address | ShopSphere{% endblock %}
+
+{% block content %}
+<div style="max-width: 650px; margin: 0 auto;">
+  <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">
+    <a href="{% url 'account_dashboard' %}">Your Account</a> &rsaquo;
+    <a href="{% url 'address_list' %}">Your Addresses</a> &rsaquo;
+    <strong>{{ action }} Address</strong>
+  </div>
+
+  <h1 style="font-size: 26px; font-weight: 700; margin-bottom: 20px;">{{ action }} delivery address</h1>
+
+  <div style="background: #fff; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 26px; box-shadow: var(--shadow-card);">
+    <form method="post">
+      {% csrf_token %}
+
+      {% if form.non_field_errors %}
+        <div class="alert-message error" style="margin-bottom: 16px;">
+          {{ form.non_field_errors.0 }}
+        </div>
+      {% endif %}
+
+      <div class="form-group">
+        <label for="{{ form.recipient_name.id_for_label }}">Full name (First and Last name)</label>
+        {{ form.recipient_name }}
+        {% if form.recipient_name.errors %}
+          <div style="color: var(--deal-red); font-size: 12px; margin-top: 4px;">{{ form.recipient_name.errors.0 }}</div>
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        <label for="{{ form.phone.id_for_label }}">Mobile number</label>
+        {{ form.phone }}
+        <small style="font-size: 11px; color: var(--text-muted); display: block; margin-top: 3px;">
+          May be used to assist delivery
+        </small>
+        {% if form.phone.errors %}
+          <div style="color: var(--deal-red); font-size: 12px; margin-top: 4px;">{{ form.phone.errors.0 }}</div>
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        <label for="{{ form.street.id_for_label }}">Flat, House no., Building, Company, Apartment</label>
+        {{ form.street }}
+        {% if form.street.errors %}
+          <div style="color: var(--deal-red); font-size: 12px; margin-top: 4px;">{{ form.street.errors.0 }}</div>
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        <label for="{{ form.landmark.id_for_label }}">Landmark (optional)</label>
+        {{ form.landmark }}
+      </div>
+
+      <div class="form-row-2">
+        <div class="form-group">
+          <label for="{{ form.city.id_for_label }}">Town / City</label>
+          {{ form.city }}
+          {% if form.city.errors %}
+            <div style="color: var(--deal-red); font-size: 12px; margin-top: 4px;">{{ form.city.errors.0 }}</div>
+          {% endif %}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.state.id_for_label }}">State</label>
+          {{ form.state }}
+          {% if form.state.errors %}
+            <div style="color: var(--deal-red); font-size: 12px; margin-top: 4px;">{{ form.state.errors.0 }}</div>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="form-row-2">
+        <div class="form-group">
+          <label for="{{ form.postal_code.id_for_label }}">PIN Code (6 digits)</label>
+          {{ form.postal_code }}
+          {% if form.postal_code.errors %}
+            <div style="color: var(--deal-red); font-size: 12px; margin-top: 4px;">{{ form.postal_code.errors.0 }}</div>
+          {% endif %}
+        </div>
+        <div class="form-group">
+          <label for="{{ form.address_type.id_for_label }}">Address Type</label>
+          {{ form.address_type }}
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 8px; margin: 16px 0 20px;">
+        {{ form.is_default }}
+        <label for="{{ form.is_default.id_for_label }}" style="font-size: 13px; cursor: pointer; user-select: none;">
+          Make this my default address
+        </label>
+      </div>
+
+      <div style="display: flex; gap: 12px;">
+        <button type="submit" class="btn btn-primary" style="padding: 10px 24px;">Save Address</button>
+        <a href="{% url 'address_list' %}" class="btn btn-secondary" style="padding: 10px 20px;">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

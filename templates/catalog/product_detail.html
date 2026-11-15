@@ -1,0 +1,266 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ product.name }} : ShopSphere.in{% endblock %}
+
+{% block content %}
+<!-- Breadcrumbs -->
+<div class="detail-breadcrumb">
+  <a href="{% url 'home' %}">Home</a> &rsaquo;
+  <a href="{% url 'product_list' %}?category={{ product.category.slug }}">{{ product.category.name }}</a> &rsaquo;
+  <span style="color: var(--text-main);">{{ product.name|truncatechars:45 }}</span>
+</div>
+
+<div class="detail-container">
+  <div class="detail-layout-grid">
+    <!-- Left Column: Gallery & Images -->
+    <div class="gallery-column">
+      <div class="gallery-thumbs">
+        <button type="button" class="thumb-btn active" data-full-image="{{ product.display_image }}">
+          <img src="{{ product.display_image }}" alt="{{ product.name }}">
+        </button>
+        {% for img in images %}
+          <button type="button" class="thumb-btn" data-full-image="{{ img.display_image }}">
+            <img src="{{ img.display_image }}" alt="{{ img.alt_text }}">
+          </button>
+        {% endfor %}
+      </div>
+
+      <div class="main-image-wrap">
+        <img id="main-product-image" src="{{ product.display_image }}" alt="{{ product.name }}">
+      </div>
+    </div>
+
+    <!-- Center Column: Details & Specs -->
+    <div class="center-detail-column">
+      <h1>{{ product.name }}</h1>
+      <a href="{% url 'product_list' %}?q={{ product.brand }}" class="brand-visit-link">
+        Brand: {{ product.brand }}
+      </a>
+
+      <!-- Rating Overview -->
+      <div class="rating-overview">
+        <span class="stars" style="font-size: 16px;">★★★★☆</span>
+        <span style="font-weight: 700; font-size: 14px;">{{ product.rating }}</span>
+        <span style="color: var(--text-muted); font-size: 13px;">|</span>
+        <a href="#customer-reviews" style="font-size: 13px;">{{ product.review_count }} ratings</a>
+        <span style="color: var(--text-muted); font-size: 13px;">|</span>
+        <span class="badge-choice">ShopSphere's <span>Choice</span></span>
+      </div>
+
+      <!-- Price Box -->
+      <div class="detail-price-box">
+        <div class="detail-price-row">
+          {% if product.original_price > product.price %}
+            <span class="deal-fraction">-{{ product.discount_percentage }}%</span>
+          {% endif %}
+          <span class="detail-current-price">₹{{ product.price|floatformat:0 }}</span>
+        </div>
+
+        {% if product.original_price > product.price %}
+          <div class="mrp-line">
+            M.R.P.: <del>₹{{ product.original_price|floatformat:0 }}</del>
+            <span style="color: var(--deal-red); font-weight: 700; margin-left: 6px;">
+              You Save: ₹{{ product.savings_amount|floatformat:0 }}
+            </span>
+          </div>
+        {% endif %}
+        <div class="taxes-note">Inclusive of all taxes</div>
+      </div>
+
+      <!-- About This Item Bullets -->
+      <h3 style="font-size: 15px; font-weight: 700; margin-top: 18px;">About this item</h3>
+      <p style="font-size: 13px; line-height: 1.6; color: #333; margin: 10px 0 16px;">
+        {{ product.description }}
+      </p>
+
+      <!-- Specifications Table -->
+      {% if product.specifications %}
+        <h3 style="font-size: 15px; font-weight: 700; margin-top: 20px;">Product Specifications</h3>
+        <table class="specs-table">
+          <tbody>
+            {% for key, val in product.specifications.items %}
+              <tr>
+                <th>{{ key }}</th>
+                <td>{{ val }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% endif %}
+    </div>
+
+    <!-- Right Column: Amazon Buy Box -->
+    <div class="buy-box">
+      <div class="buy-box-price">₹{{ product.price|floatformat:0 }}</div>
+
+      <div class="delivery-lead-time">
+        <span class="badge-prime">✓prime</span> FREE Delivery <strong>Tomorrow, 2 PM</strong>.
+      </div>
+
+      <div class="delivery-location-hint">
+        <span>📍</span> Deliver to {{ user.first_name|default:user.username }} - India
+      </div>
+
+      <!-- Stock Status -->
+      {% if product.stock > 10 %}
+        <div class="stock-status in-stock">In Stock</div>
+      {% elif product.stock > 0 %}
+        <div class="stock-status low-stock">Only {{ product.stock }} left in stock - order soon.</div>
+      {% else %}
+        <div class="stock-status out-of-stock">Currently Unavailable</div>
+      {% endif %}
+
+      {% if product.stock > 0 %}
+        <form method="post" action="{% url 'add_to_cart' product_id=product.pk %}">
+          {% csrf_token %}
+          <div class="quantity-select-row">
+            <label for="quantity-select" style="font-weight: 700; font-size: 13px;">Quantity:</label>
+            <select name="quantity" id="quantity-select">
+              <option value="1">1</option>
+              {% if product.stock >= 2 %}<option value="2">2</option>{% endif %}
+              {% if product.stock >= 3 %}<option value="3">3</option>{% endif %}
+              {% if product.stock >= 4 %}<option value="4">4</option>{% endif %}
+              {% if product.stock >= 5 %}<option value="5">5</option>{% endif %}
+            </select>
+          </div>
+
+          <div class="buy-box-actions">
+            <button type="submit" class="btn btn-primary btn-block">Add to Cart</button>
+            <button type="submit" name="next" value="{% url 'checkout' %}" class="btn btn-buy btn-block">
+              Buy Now
+            </button>
+          </div>
+        </form>
+      {% endif %}
+
+      <div style="font-size: 12px; color: var(--text-muted); border-top: 1px solid var(--border-subtle); padding-top: 12px; margin-top: 12px;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+          <span>Ships from</span>
+          <span style="font-weight: 600; color: #111;">ShopSphere</span>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+          <span>Sold by</span>
+          <span style="font-weight: 600; color: #111;">{{ product.brand|default:"ShopSphere Retail" }}</span>
+        </div>
+      </div>
+
+      <div class="secure-transaction-line">
+        <span>🔒</span> Secure transaction
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Related Products Shelf -->
+{% if related %}
+  <section class="product-shelf">
+    <div class="shelf-header">
+      <h2 class="shelf-title">Customers also viewed these items</h2>
+    </div>
+    <div class="shelf-grid">
+      {% for rel in related %}
+        <div class="product-card">
+          <a href="{{ rel.get_absolute_url }}" class="product-thumb-wrap">
+            <img src="{{ rel.display_image }}" alt="{{ rel.name }}" loading="lazy">
+          </a>
+          <div class="product-brand">{{ rel.brand }}</div>
+          <a href="{{ rel.get_absolute_url }}" class="product-title" title="{{ rel.name }}">
+            {{ rel.name }}
+          </a>
+          <div class="product-rating-row">
+            <span class="stars">★★★★☆</span>
+            <span class="review-count">({{ rel.review_count }})</span>
+          </div>
+          <div class="price-row">
+            <span class="current-price">₹{{ rel.price|floatformat:0 }}</span>
+            {% if rel.original_price > rel.price %}
+              <span class="original-price">₹{{ rel.original_price|floatformat:0 }}</span>
+            {% endif %}
+          </div>
+          <div class="card-actions">
+            <form method="post" action="{% url 'add_to_cart' product_id=rel.pk %}">
+              {% csrf_token %}
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" class="btn btn-primary btn-block">Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}
+
+<!-- Customer Reviews Section -->
+<section class="reviews-section" id="customer-reviews">
+  <div class="reviews-grid">
+    <!-- Left Review Breakdown -->
+    <div class="review-summary-box">
+      <h3>Customer Reviews</h3>
+      <div class="avg-rating-large">
+        <span class="stars" style="color: var(--star-gold);">★★★★☆</span>
+        <span>{{ product.rating }} out of 5</span>
+      </div>
+      <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">
+        {{ product.review_count }} global ratings
+      </div>
+
+      <div class="review-form-card">
+        <h4>Review this product</h4>
+        <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">
+          Share your thoughts with other customers
+        </p>
+
+        <form method="post">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="{{ review_form.rating.id_for_label }}">Overall Rating</label>
+            {{ review_form.rating }}
+          </div>
+          <div class="form-group">
+            <label for="{{ review_form.title.id_for_label }}">Headline</label>
+            {{ review_form.title }}
+          </div>
+          <div class="form-group">
+            <label for="{{ review_form.comment.id_for_label }}">Written Review</label>
+            {{ review_form.comment }}
+          </div>
+          <button type="submit" name="submit_review" class="btn btn-secondary btn-block">
+            Submit Review
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Right Reviews List -->
+    <div>
+      <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px;">Top Reviews from India</h3>
+      {% if reviews %}
+        {% for r in reviews %}
+          <div class="review-item">
+            <div class="review-author">
+              <span style="font-size: 20px;">👤</span>
+              <span>{{ r.user.first_name|default:r.user.username }}</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+              <span class="stars" style="font-size: 13px; color: var(--star-gold);">
+                {% if r.rating == 5 %}★★★★★{% elif r.rating == 4 %}★★★★☆{% elif r.rating == 3 %}★★★☆☆{% elif r.rating == 2 %}★★☆☆☆{% else %}★☆☆☆☆{% endif %}
+              </span>
+              <strong style="font-size: 13px;">{{ r.title }}</strong>
+            </div>
+            <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 6px;">
+              Reviewed in India on {{ r.created_at|date:"d F Y" }}
+            </div>
+            <div class="verified-purchase-badge">✓ Verified Purchase</div>
+            <p class="review-text">{{ r.comment }}</p>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p style="color: var(--text-muted); font-size: 14px;">
+          No customer reviews yet. Be the first to review this product!
+        </p>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Sign In | ShopSphere{% endblock %}
+
+{% block content %}
+<div class="auth-page-wrapper">
+  <!-- Brand Header -->
+  <div class="auth-brand-center">
+    <div class="brand-logo">
+      Shop<span style="color: var(--btn-buy-now);">Sphere</span><span class="dot" style="color: var(--accent-gold);">.</span><span class="in-badge" style="color: var(--btn-primary);">in</span>
+    </div>
+  </div>
+
+  <!-- Sign In Card -->
+  <div class="auth-box">
+    <h1>Sign in</h1>
+
+    <form method="post" action="{% url 'login' %}">
+      {% csrf_token %}
+
+      {% if form.non_field_errors %}
+        <div class="alert-message error" style="margin-bottom: 14px;">
+          {{ form.non_field_errors.0 }}
+        </div>
+      {% endif %}
+
+      <!-- Email or Username -->
+      <div class="form-group">
+        <label for="id_username">Email or mobile phone number / username</label>
+        {{ form.username }}
+        {% if form.username.errors %}
+          <div style="color: var(--deal-red); font-size: 12px; margin-top: 4px;">{{ form.username.errors.0 }}</div>
+        {% endif %}
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px;">
+          <label for="id_password" style="margin-bottom: 0;">Password</label>
+          <a href="{% url 'password_reset' %}" style="font-size: 12px;">Forgot Password?</a>
+        </div>
+        <div class="password-input-wrap">
+          {{ form.password }}
+          <button type="button" class="password-toggle-btn" onclick="togglePassword('id_password', this)">Show</button>
+        </div>
+        {% if form.password.errors %}
+          <div style="color: var(--deal-red); font-size: 12px; margin-top: 4px;">{{ form.password.errors.0 }}</div>
+        {% endif %}
+      </div>
+
+      <!-- Remember Me -->
+      <div style="display: flex; align-items: center; gap: 8px; margin: 14px 0 18px;">
+        {{ form.remember_me }}
+        <label for="remember_me" style="font-size: 12px; cursor: pointer; user-select: none;">Keep me signed in. Details</label>
+      </div>
+
+      <input type="hidden" name="next" value="{{ next }}">
+
+      <button type="submit" class="btn btn-primary btn-block" style="padding: 10px; font-size: 14px;">
+        Sign In
+      </button>
+
+      <p style="font-size: 11px; color: var(--text-muted); margin-top: 18px; line-height: 1.4;">
+        By continuing, you agree to ShopSphere's <a href="#">Conditions of Use</a> and <a href="#">Privacy Notice</a>.
+      </p>
+    </form>
+  </div>
+
+  <!-- New to ShopSphere Divider -->
+  <div class="auth-divider">
+    <span>New to ShopSphere?</span>
+  </div>
+
+  <a href="{% url 'register' %}" class="btn btn-secondary btn-block" style="padding: 10px; font-size: 13px;">
+    Create your ShopSphere account
+  </a>
+</div>
+{% endblock %}

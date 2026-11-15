@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Order Details #{{ order.short_order_number }} | ShopSphere.in{% endblock %}
+
+{% block content %}
+<div style="max-width: 980px; margin: 0 auto;">
+  <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">
+    <a href="{% url 'account_dashboard' %}">Your Account</a> &rsaquo;
+    <a href="{% url 'order_history' %}">Your Orders</a> &rsaquo;
+    <strong>Order Details</strong>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 18px; flex-wrap: wrap; gap: 12px;">
+    <h1 style="font-size: 26px; font-weight: 700;">Order Details</h1>
+    <div style="font-size: 13px; color: var(--text-muted);">
+      Ordered on {{ order.created_at|date:"d F Y" }} · Order # {{ order.short_order_number }}
+    </div>
+  </div>
+
+  <!-- Order Status Timeline (Amazon Progress Bar) -->
+  <div style="background: #fff; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 24px; box-shadow: var(--shadow-card); margin-bottom: 24px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
+      <h2 style="font-size: 18px; font-weight: 700;">
+        Shipment Status: <span class="status-pill {{ order.status }}">{{ order.get_status_display }}</span>
+      </h2>
+      <div style="font-size: 13px; color: var(--text-muted);">
+        Estimated Delivery: <strong style="color: var(--stock-green);">{{ estimated_delivery|date:"l, d M Y" }}</strong>
+      </div>
+    </div>
+
+    <!-- Timeline Steps -->
+    {% if order.status != 'cancelled' %}
+      <div style="display: flex; justify-content: space-between; position: relative; margin: 30px 20px 20px;">
+        <div style="position: absolute; top: 12px; left: 0; right: 0; height: 4px; background: #e0e0e0; z-index: 1;">
+          <div style="height: 100%; background: var(--stock-green); width: {% if order.status == 'placed' %}15%{% elif order.status == 'confirmed' %}45%{% elif order.status == 'shipped' %}75%{% elif order.status == 'delivered' %}100%{% endif %}; transition: width 0.3s ease;"></div>
+        </div>
+
+        <div style="position: relative; z-index: 2; text-align: center;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--stock-green); color: #fff; display: grid; place-items: center; margin: 0 auto 6px; font-weight: 700; font-size: 12px;">✓</div>
+          <span style="font-size: 12px; font-weight: 700;">Ordered</span>
+        </div>
+
+        <div style="position: relative; z-index: 2; text-align: center;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: {% if order.status in 'confirmed shipped delivered' %}var(--stock-green){% else %}#e0e0e0{% endif %}; color: #fff; display: grid; place-items: center; margin: 0 auto 6px; font-weight: 700; font-size: 12px;">{% if order.status in 'confirmed shipped delivered' %}✓{% else %}2{% endif %}</div>
+          <span style="font-size: 12px; font-weight: 700;">Confirmed</span>
+        </div>
+
+        <div style="position: relative; z-index: 2; text-align: center;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: {% if order.status in 'shipped delivered' %}var(--stock-green){% else %}#e0e0e0{% endif %}; color: #fff; display: grid; place-items: center; margin: 0 auto 6px; font-weight: 700; font-size: 12px;">{% if order.status in 'shipped delivered' %}✓{% else %}3{% endif %}</div>
+          <span style="font-size: 12px; font-weight: 700;">Shipped</span>
+        </div>
+
+        <div style="position: relative; z-index: 2; text-align: center;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: {% if order.status == 'delivered' %}var(--stock-green){% else %}#e0e0e0{% endif %}; color: #fff; display: grid; place-items: center; margin: 0 auto 6px; font-weight: 700; font-size: 12px;">{% if order.status == 'delivered' %}✓{% else %}4{% endif %}</div>
+          <span style="font-size: 12px; font-weight: 700;">Delivered</span>
+        </div>
+      </div>
+    {% else %}
+      <div style="background: #fee2e2; border-left: 4px solid #b91c1c; padding: 12px 16px; border-radius: var(--radius-sm); color: #991b1b; font-size: 13px;">
+        <strong>This order was cancelled.</strong> Any payments made have been refunded or voided.
+      </div>
+    {% endif %}
+  </div>
+
+  <!-- Shipping & Payment Info Cards Grid -->
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 24px;">
+    <!-- Shipping Address -->
+    <div style="background: #fff; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 18px; box-shadow: var(--shadow-card);">
+      <h3 style="font-size: 14px; font-weight: 700; margin-bottom: 10px;">Shipping Address</h3>
+      <p style="font-size: 13px; line-height: 1.5; color: #333;">
+        <strong>{{ order.recipient_name }}</strong><br>
+        {{ order.delivery_address }}
+      </p>
+    </div>
+
+    <!-- Payment Method -->
+    <div style="background: #fff; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 18px; box-shadow: var(--shadow-card);">
+      <h3 style="font-size: 14px; font-weight: 700; margin-bottom: 10px;">Payment Method</h3>
+      <p style="font-size: 13px; line-height: 1.5; color: #333;">
+        {{ order.get_payment_method_display }}<br>
+        Status: <strong>{{ order.get_payment_status_display }}</strong>
+      </p>
+    </div>
+
+    <!-- Order Summary -->
+    <div style="background: #fff; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 18px; box-shadow: var(--shadow-card);">
+      <h3 style="font-size: 14px; font-weight: 700; margin-bottom: 10px;">Order Summary</h3>
+      <div style="font-size: 13px; line-height: 1.6;">
+        <div style="display: flex; justify-content: space-between;">
+          <span>Items:</span>
+          <span>₹{{ order.subtotal|floatformat:2 }}</span>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+          <span>Delivery:</span>
+          <span>{% if order.delivery_fee == 0 %}FREE{% else %}₹{{ order.delivery_fee|floatformat:2 }}{% endif %}</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-weight: 700; border-top: 1px solid var(--border-subtle); padding-top: 6px; margin-top: 6px;">
+          <span>Grand Total:</span>
+          <span style="color: #b12704;">₹{{ order.total|floatformat:2 }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ordered Items List -->
+  <div style="background: #fff; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 22px; box-shadow: var(--shadow-card); margin-bottom: 24px;">
+    <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 16px;">Items in this order</h3>
+    {% for item in items %}
+      <div style="display: flex; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--border-subtle); align-items: center;">
+        {% if item.product %}
+          <img src="{{ item.product.display_image }}" alt="{{ item.product_name }}" style="width: 80px; height: 80px; object-fit: contain;">
+        {% endif %}
+        <div style="flex: 1;">
+          <h4 style="font-size: 15px; font-weight: 600; margin-bottom: 4px;">
+            {% if item.product %}
+              <a href="{{ item.product.get_absolute_url }}">{{ item.product_name }}</a>
+            {% else %}
+              {{ item.product_name }}
+            {% endif %}
+          </h4>
+          <div style="font-size: 12px; color: var(--text-muted);">
+            Sold by: {{ item.product.brand|default:"ShopSphere" }} · Quantity: {{ item.quantity }}
+          </div>
+          <div style="font-weight: 700; font-size: 14px; margin-top: 4px;">
+            ₹{{ item.line_total|floatformat:2 }}
+          </div>
+        </div>
+
+        <div>
+          {% if item.product %}
+            <form method="post" action="{% url 'add_to_cart' product_id=item.product.pk %}">
+              {% csrf_token %}
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" class="btn btn-primary" style="padding: 6px 16px; font-size: 12px;">
+                Buy it again
+              </button>
+            </form>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- Cancel Order Action -->
+  {% if order.can_cancel %}
+    <div style="background: #fff; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 18px; box-shadow: var(--shadow-card); display: flex; justify-content: space-between; align-items: center;">
+      <div>
+        <strong style="color: #0f1111; font-size: 14px;">Need to cancel this order?</strong>
+        <p style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">
+          You can cancel this order before it enters the shipping process. Inventory will be immediately restored.
+        </p>
+      </div>
+      <form method="post" action="{% url 'cancel_order' order_number=order.order_number %}" onsubmit="return confirm('Are you sure you want to cancel this order?');">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-secondary" style="border-color: var(--deal-red); color: var(--deal-red); font-size: 12px; padding: 8px 16px;">
+          Cancel Order
+        </button>
+      </form>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

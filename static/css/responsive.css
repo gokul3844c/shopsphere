@@ -1,0 +1,132 @@
+/* ==========================================================================
+   ShopSphere E-Commerce - Responsive Media Queries
+   ========================================================================== */
+
+@media (max-width: 1200px) {
+  .card-grid-quad {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .shelf-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .listing-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .detail-layout-grid {
+    grid-template-columns: 380px 1fr 260px;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 992px) {
+  .topbar {
+    flex-wrap: wrap;
+    padding: 8px 12px;
+  }
+  .nav-location {
+    display: none;
+  }
+  .nav-search-container {
+    order: 3;
+    flex-basis: 100%;
+    max-width: 100%;
+    margin: 8px 0 4px;
+  }
+  .listing-layout {
+    grid-template-columns: 1fr;
+  }
+  .filter-sidebar {
+    margin-bottom: 16px;
+  }
+  .detail-layout-grid {
+    grid-template-columns: 1fr;
+  }
+  .gallery-column {
+    flex-direction: column-reverse;
+  }
+  .gallery-thumbs {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+  .main-image-wrap {
+    height: 320px;
+  }
+  .cart-layout-grid,
+  .checkout-grid {
+    grid-template-columns: 1fr;
+  }
+  .cart-summary-card {
+    position: static;
+  }
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-nav-columns {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .brand-logo {
+    font-size: 20px;
+  }
+  .nav-right-actions {
+    gap: 4px;
+  }
+  .nav-link-item {
+    padding: 4px 6px;
+  }
+  .nav-link-item .sub-text {
+    display: none;
+  }
+  .hero-banner {
+    min-height: 240px;
+    padding: 24px 20px 80px;
+    margin-bottom: -60px;
+  }
+  .hero-title {
+    font-size: 26px;
+  }
+  .hero-subtitle {
+    font-size: 14px;
+  }
+  .card-grid-quad {
+    grid-template-columns: 1fr;
+  }
+  .shelf-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .listing-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .product-thumb-wrap {
+    height: 140px;
+  }
+  .product-card {
+    padding: 10px;
+  }
+  .current-price {
+    font-size: 16px;
+  }
+  .cart-item-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .cart-item-thumb {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+  }
+  .cart-item-price {
+    text-align: left;
+  }
+  .form-row-2 {
+    grid-template-columns: 1fr;
+  }
+  .footer-nav-columns {
+    grid-template-columns: 1fr;
+  }
+}

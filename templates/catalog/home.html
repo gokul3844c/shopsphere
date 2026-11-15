@@ -1,0 +1,206 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}ShopSphere: Online Shopping for Electronics, Fashion, Books & More{% endblock %}
+
+{% block content %}
+<!-- Hero Promotional Banner -->
+<section class="hero-banner">
+  <div class="hero-content">
+    <span class="hero-tag">Great Indian Festive Deals</span>
+    <h1 class="hero-title">Upgrade Your Lifestyle with Unmatched Savings</h1>
+    <p class="hero-subtitle">
+      Explore over 100+ verified tech gadgets, designer fashion, kitchen essentials, and bestselling books with lightning-fast delivery.
+    </p>
+    <a href="{% url 'product_list' %}?sort=rating" class="btn btn-primary" style="padding: 12px 28px; font-size: 15px; font-weight: 700;">
+      Explore Today's Deals
+    </a>
+  </div>
+</section>
+
+<!-- 4-Box Category Cards Quad Grid (Amazon Homepage Style) -->
+<section class="card-grid-quad">
+  <!-- Card 1: Electronics -->
+  <div class="quad-card">
+    <h3>Flagship Electronics & Audio</h3>
+    <div class="quad-card-img-wrap">
+      <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800" alt="Electronics">
+    </div>
+    <a href="{% url 'product_list' %}?category=electronics" class="quad-card-link">Shop audio & accessories &rsaquo;</a>
+  </div>
+
+  <!-- Card 2: Computers & Laptops -->
+  <div class="quad-card">
+    <h3>High-Performance Computing</h3>
+    <div class="quad-card-img-wrap">
+      <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800" alt="Computers">
+    </div>
+    <a href="{% url 'product_list' %}?category=computers" class="quad-card-link">Explore laptops & monitors &rsaquo;</a>
+  </div>
+
+  <!-- Card 3: Fashion Essentials -->
+  <div class="quad-card">
+    <h3>Trending Everyday Fashion</h3>
+    <div class="quad-card-img-wrap">
+      <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=800" alt="Fashion">
+    </div>
+    <a href="{% url 'product_list' %}?category=fashion" class="quad-card-link">Discover top apparel &rsaquo;</a>
+  </div>
+
+  <!-- Card 4: Home & Kitchen -->
+  <div class="quad-card">
+    <h3>Smart Home & Modern Kitchen</h3>
+    <div class="quad-card-img-wrap">
+      <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800" alt="Home & Kitchen">
+    </div>
+    <a href="{% url 'product_list' %}?category=home-and-kitchen" class="quad-card-link">See kitchen appliances &rsaquo;</a>
+  </div>
+</section>
+
+<!-- Today's Deals Shelf -->
+<section class="product-shelf">
+  <div class="shelf-header">
+    <div style="display: flex; align-items: baseline; gap: 12px;">
+      <h2 class="shelf-title">Today's Deals</h2>
+      <span style="font-size: 13px; color: var(--deal-red); font-weight: 700;">Up to 50% Off</span>
+    </div>
+    <a href="{% url 'product_list' %}?sort=rating" class="shelf-link">See all deals &rsaquo;</a>
+  </div>
+
+  <div class="shelf-grid">
+    {% for product in todays_deals|slice:":4" %}
+      <div class="product-card">
+        <a href="{{ product.get_absolute_url }}" class="product-thumb-wrap">
+          <img src="{{ product.display_image }}" alt="{{ product.name }}" loading="lazy">
+        </a>
+        <div class="product-brand">{{ product.brand }}</div>
+        <a href="{{ product.get_absolute_url }}" class="product-title" title="{{ product.name }}">
+          {{ product.name }}
+        </a>
+        <div class="product-rating-row">
+          <span class="stars">★★★★☆</span>
+          <span class="review-count">({{ product.review_count }})</span>
+        </div>
+        <div class="price-row">
+          <span class="current-price">₹{{ product.price|floatformat:0 }}</span>
+          {% if product.original_price > product.price %}
+            <span class="original-price">₹{{ product.original_price|floatformat:0 }}</span>
+            <span class="badge-deal">{{ product.discount_percentage }}% off</span>
+          {% endif %}
+        </div>
+        <div class="delivery-info">
+          <span class="badge-prime">✓prime</span> FREE Delivery <strong>Tomorrow</strong>
+        </div>
+        <div class="card-actions">
+          <form method="post" action="{% url 'add_to_cart' product_id=product.pk %}">
+            {% csrf_token %}
+            <input type="hidden" name="quantity" value="1">
+            <button type="submit" class="btn btn-primary btn-block">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- Best Sellers in Electronics Shelf -->
+<section class="product-shelf">
+  <div class="shelf-header">
+    <h2 class="shelf-title">Best Sellers in Electronics</h2>
+    <a href="{% url 'product_list' %}?category=electronics" class="shelf-link">See more &rsaquo;</a>
+  </div>
+
+  <div class="shelf-grid">
+    {% for product in electronics %}
+      <div class="product-card">
+        <a href="{{ product.get_absolute_url }}" class="product-thumb-wrap">
+          <img src="{{ product.display_image }}" alt="{{ product.name }}" loading="lazy">
+        </a>
+        <div class="product-brand">{{ product.brand }}</div>
+        <a href="{{ product.get_absolute_url }}" class="product-title" title="{{ product.name }}">
+          {{ product.name }}
+        </a>
+        <div class="product-rating-row">
+          <span class="stars">★★★★★</span>
+          <span class="review-count">({{ product.review_count }})</span>
+        </div>
+        <div class="price-row">
+          <span class="current-price">₹{{ product.price|floatformat:0 }}</span>
+          {% if product.original_price > product.price %}
+            <span class="original-price">₹{{ product.original_price|floatformat:0 }}</span>
+            <span class="discount-tag">({{ product.discount_percentage }}% off)</span>
+          {% endif %}
+        </div>
+        <div class="delivery-info">
+          <span class="badge-prime">✓prime</span> FREE Delivery by <strong>Tomorrow, 2 PM</strong>
+        </div>
+        <div class="card-actions">
+          <form method="post" action="{% url 'add_to_cart' product_id=product.pk %}">
+            {% csrf_token %}
+            <input type="hidden" name="quantity" value="1">
+            <button type="submit" class="btn btn-primary btn-block">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- Bestselling Books Shelf -->
+<section class="product-shelf">
+  <div class="shelf-header">
+    <h2 class="shelf-title">Top Rated Books & Guides</h2>
+    <a href="{% url 'product_list' %}?category=books" class="shelf-link">Explore library &rsaquo;</a>
+  </div>
+
+  <div class="shelf-grid">
+    {% for product in books %}
+      <div class="product-card">
+        <a href="{{ product.get_absolute_url }}" class="product-thumb-wrap">
+          <img src="{{ product.display_image }}" alt="{{ product.name }}" loading="lazy">
+        </a>
+        <div class="product-brand">{{ product.brand }}</div>
+        <a href="{{ product.get_absolute_url }}" class="product-title" title="{{ product.name }}">
+          {{ product.name }}
+        </a>
+        <div class="product-rating-row">
+          <span class="stars">★★★★★</span>
+          <span class="review-count">({{ product.review_count }})</span>
+        </div>
+        <div class="price-row">
+          <span class="current-price">₹{{ product.price|floatformat:0 }}</span>
+          {% if product.original_price > product.price %}
+            <span class="original-price">₹{{ product.original_price|floatformat:0 }}</span>
+            <span class="discount-tag">({{ product.discount_percentage }}% off)</span>
+          {% endif %}
+        </div>
+        <div class="delivery-info">
+          <span class="badge-prime">✓prime</span> FREE Delivery by <strong>ShopSphere</strong>
+        </div>
+        <div class="card-actions">
+          <form method="post" action="{% url 'add_to_cart' product_id=product.pk %}">
+            {% csrf_token %}
+            <input type="hidden" name="quantity" value="1">
+            <button type="submit" class="btn btn-primary btn-block">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- Category Highlights Carousel Bar -->
+<section style="background: #fff; padding: 22px; border-radius: var(--radius-sm); box-shadow: var(--shadow-card); margin-bottom: 24px;">
+  <h2 style="font-size: 20px; font-weight: 700; margin-bottom: 16px;">Shop by Category</h2>
+  <div style="display: flex; gap: 16px; overflow-x: auto; padding-bottom: 8px;">
+    {% for cat in categories %}
+      <a href="{% url 'product_list' %}?category={{ cat.slug }}" style="display: flex; flex-direction: column; align-items: center; min-width: 130px; text-decoration: none; color: inherit; padding: 12px; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); text-align: center; transition: all 0.15s ease;">
+        <div style="width: 70px; height: 70px; border-radius: 50%; overflow: hidden; background: #f0f2f2; margin-bottom: 10px; display: grid; place-items: center;">
+          <img src="{{ cat.display_image }}" alt="{{ cat.name }}" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <span style="font-size: 13px; font-weight: 700;">{{ cat.name }}</span>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

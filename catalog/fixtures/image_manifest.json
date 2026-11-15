@@ -1,0 +1,730 @@
+{
+  "SP-ELE-0001": {
+    "name": "Noise-Cancelling Over-Ear Headphones",
+    "category": "Electronics",
+    "local_image": "products/sp-ele-0001.svg",
+    "remote_image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-ELE-0002": {
+    "name": "Compact Bluetooth Soundbar 80W",
+    "category": "Electronics",
+    "local_image": "products/sp-ele-0002.svg",
+    "remote_image": "https://images.unsplash.com/photo-1545454675-3531b543be5d?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-ELE-0003": {
+    "name": "Smart 4K Ultra HD Streaming Box",
+    "category": "Electronics",
+    "local_image": "products/sp-ele-0003.svg",
+    "remote_image": "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-ELE-0004": {
+    "name": "True Wireless Earbuds with ANC",
+    "category": "Electronics",
+    "local_image": "products/sp-ele-0004.svg",
+    "remote_image": "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-ELE-0005": {
+    "name": "Outdoor Weatherproof Security Camera",
+    "category": "Electronics",
+    "local_image": "products/sp-ele-0005.svg",
+    "remote_image": "https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-ELE-0006": {
+    "name": "Rugged Portable Waterproof Speaker",
+    "category": "Electronics",
+    "local_image": "products/sp-ele-0006.svg",
+    "remote_image": "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-ELE-0007": {
+    "name": "4K Action Camera with Dual Screens",
+    "category": "Electronics",
+    "local_image": "products/sp-ele-0007.svg",
+    "remote_image": "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-ELE-0008": {
+    "name": "Smart Dimmable LED Desk Lamp",
+    "category": "Electronics",
+    "local_image": "products/sp-ele-0008.svg",
+    "remote_image": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-ELE-0009": {
+    "name": "Fast Power Bank 20000mAh 22.5W",
+    "category": "Electronics",
+    "local_image": "products/sp-ele-0009.svg",
+    "remote_image": "https://images.unsplash.com/photo-1609592426868-45e054527787?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-ELE-0010": {
+    "name": "Mini Foldable GPS Drone with HD Camera",
+    "category": "Electronics",
+    "local_image": "products/sp-ele-0010.svg",
+    "remote_image": "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-ELE-0011": {
+    "name": "Smart Wi-Fi Plug with Energy Monitor 16A",
+    "category": "Electronics",
+    "local_image": "products/sp-ele-0011.svg",
+    "remote_image": "https://images.unsplash.com/photo-1558002038-1055907df827?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-ELE-0012": {
+    "name": "Studio Cardioid USB Condenser Microphone",
+    "category": "Electronics",
+    "local_image": "products/sp-ele-0012.svg",
+    "remote_image": "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-ELE-0013": {
+    "name": "Digital Alarm Clock with Wireless Charging",
+    "category": "Electronics",
+    "local_image": "products/sp-ele-0013.svg",
+    "remote_image": "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-COM-0014": {
+    "name": "SphereBook 15.6-inch Thin & Light Laptop",
+    "category": "Computers",
+    "local_image": "products/sp-com-0014.svg",
+    "remote_image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-COM-0015": {
+    "name": "27-inch 4K UHD IPS Frameless Monitor",
+    "category": "Computers",
+    "local_image": "products/sp-com-0015.svg",
+    "remote_image": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-COM-0016": {
+    "name": "Portable External NVMe SSD 1TB USB 3.2",
+    "category": "Computers",
+    "local_image": "products/sp-com-0016.svg",
+    "remote_image": "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-COM-0017": {
+    "name": "Ergonomic Vertical Wireless Mouse",
+    "category": "Computers",
+    "local_image": "products/sp-com-0017.svg",
+    "remote_image": "https://images.unsplash.com/photo-1527814050087-3793815479db?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-COM-0018": {
+    "name": "8-in-1 Aluminum USB-C Hub Multiport Adapter",
+    "category": "Computers",
+    "local_image": "products/sp-com-0018.svg",
+    "remote_image": "https://images.unsplash.com/photo-1544652478-6653e09f18a2?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-COM-0019": {
+    "name": "Pro HD 1080p Streaming Webcam with Privacy Shutter",
+    "category": "Computers",
+    "local_image": "products/sp-com-0019.svg",
+    "remote_image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-COM-0020": {
+    "name": "Mechanical Gaming Keyboard RGB Hot-Swappable",
+    "category": "Computers",
+    "local_image": "products/sp-com-0020.svg",
+    "remote_image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-COM-0021": {
+    "name": "Wi-Fi 6 Dual-Band Mesh Router AX1800",
+    "category": "Computers",
+    "local_image": "products/sp-com-0021.svg",
+    "remote_image": "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-COM-0022": {
+    "name": "Aluminum Ventilated Laptop Cooling Stand",
+    "category": "Computers",
+    "local_image": "products/sp-com-0022.svg",
+    "remote_image": "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-COM-0023": {
+    "name": "Graphic Drawing Pen Tablet 10x6 inch",
+    "category": "Computers",
+    "local_image": "products/sp-com-0023.svg",
+    "remote_image": "https://images.unsplash.com/photo-1563206767-5b18f218e8de?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-COM-0024": {
+    "name": "Heavy Duty Under-Desk Cable Management Tray",
+    "category": "Computers",
+    "local_image": "products/sp-com-0024.svg",
+    "remote_image": "https://images.unsplash.com/photo-1595053826286-2e59ef79ff18?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-COM-0025": {
+    "name": "Curved 34-inch WQHD Gaming Monitor 144Hz",
+    "category": "Computers",
+    "local_image": "products/sp-com-0025.svg",
+    "remote_image": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-COM-0026": {
+    "name": "Waterproof Neoprene Laptop Sleeve 14-inch",
+    "category": "Computers",
+    "local_image": "products/sp-com-0026.svg",
+    "remote_image": "https://images.unsplash.com/photo-1544816155-12df9643f363?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-MOB-0027": {
+    "name": "SpherePhone Apex 5G (8GB RAM, 128GB)",
+    "category": "Mobile Phones",
+    "local_image": "products/sp-mob-0027.svg",
+    "remote_image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-MOB-0028": {
+    "name": "SpherePhone Titan Pro 5G (12GB RAM, 256GB)",
+    "category": "Mobile Phones",
+    "local_image": "products/sp-mob-0028.svg",
+    "remote_image": "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-MOB-0029": {
+    "name": "Nova Lite 4G Smartphone (4GB RAM, 64GB)",
+    "category": "Mobile Phones",
+    "local_image": "products/sp-mob-0029.svg",
+    "remote_image": "https://images.unsplash.com/photo-1580910051074-3eb694886505?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-MOB-0030": {
+    "name": "65W GaN 3-Port Fast Wall Charger",
+    "category": "Mobile Phones",
+    "local_image": "products/sp-mob-0030.svg",
+    "remote_image": "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-MOB-0031": {
+    "name": "Wireless Magnetic Charging Stand 15W",
+    "category": "Mobile Phones",
+    "local_image": "products/sp-mob-0031.svg",
+    "remote_image": "https://images.unsplash.com/photo-1622445262464-84b1456045b6?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-MOB-0032": {
+    "name": "3-Axis Handheld Smartphone Gimbal Stabilizer",
+    "category": "Mobile Phones",
+    "local_image": "products/sp-mob-0032.svg",
+    "remote_image": "https://images.unsplash.com/photo-1544816155-12df9643f363?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-MOB-0033": {
+    "name": "Heavy-Duty Ring Kickstand Phone Case",
+    "category": "Mobile Phones",
+    "local_image": "products/sp-mob-0033.svg",
+    "remote_image": "https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-MOB-0034": {
+    "name": "Tempered Glass Screen Protector 9H [2-Pack]",
+    "category": "Mobile Phones",
+    "local_image": "products/sp-mob-0034.svg",
+    "remote_image": "https://images.unsplash.com/photo-1584006682522-dc17d6c0d9ac?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-MOB-0035": {
+    "name": "Magnetic Air Vent Car Phone Mount Holder",
+    "category": "Mobile Phones",
+    "local_image": "products/sp-mob-0035.svg",
+    "remote_image": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-MOB-0036": {
+    "name": "Braided USB-C to USB-C Fast Cable [2-Pack 2M]",
+    "category": "Mobile Phones",
+    "local_image": "products/sp-mob-0036.svg",
+    "remote_image": "https://images.unsplash.com/photo-1544816155-12df9643f363?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-MOB-0037": {
+    "name": "Universal Waterproof Phone Pouch IPX8 [Pack of 2]",
+    "category": "Mobile Phones",
+    "local_image": "products/sp-mob-0037.svg",
+    "remote_image": "https://images.unsplash.com/photo-1544816155-12df9643f363?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-MOB-0038": {
+    "name": "Clip-On LED Selfie Ring Light for Phones",
+    "category": "Mobile Phones",
+    "local_image": "products/sp-mob-0038.svg",
+    "remote_image": "https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-MOB-0039": {
+    "name": "Dual USB Fast Car Charger 38W Metal",
+    "category": "Mobile Phones",
+    "local_image": "products/sp-mob-0039.svg",
+    "remote_image": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-FAS-0040": {
+    "name": "Classic Oxford Pure Cotton Formal Shirt",
+    "category": "Fashion",
+    "local_image": "products/sp-fas-0040.svg",
+    "remote_image": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-FAS-0041": {
+    "name": "Slim Fit Stretch Chino Trousers",
+    "category": "Fashion",
+    "local_image": "products/sp-fas-0041.svg",
+    "remote_image": "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-FAS-0042": {
+    "name": "All-Weather Waterproof Windbreaker Jacket",
+    "category": "Fashion",
+    "local_image": "products/sp-fas-0042.svg",
+    "remote_image": "https://images.unsplash.com/photo-1544441893-675973e31985?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-FAS-0043": {
+    "name": "Polarized Classic Aviator Sunglasses UV400",
+    "category": "Fashion",
+    "local_image": "products/sp-fas-0043.svg",
+    "remote_image": "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-FAS-0044": {
+    "name": "Genuine Top-Grain Leather Bi-Fold Wallet",
+    "category": "Fashion",
+    "local_image": "products/sp-fas-0044.svg",
+    "remote_image": "https://images.unsplash.com/photo-1627123424574-724758594e93?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-FAS-0045": {
+    "name": "Minimalist Analog Quartz Watch with Mesh Strap",
+    "category": "Fashion",
+    "local_image": "products/sp-fas-0045.svg",
+    "remote_image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-FAS-0046": {
+    "name": "Lightweight Breathable Running Shoes",
+    "category": "Fashion",
+    "local_image": "products/sp-fas-0046.svg",
+    "remote_image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-FAS-0047": {
+    "name": "Canvas Weekender Travel Duffle Bag 40L",
+    "category": "Fashion",
+    "local_image": "products/sp-fas-0047.svg",
+    "remote_image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-FAS-0048": {
+    "name": "Merino Blend Crewneck Knit Sweater",
+    "category": "Fashion",
+    "local_image": "products/sp-fas-0048.svg",
+    "remote_image": "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-FAS-0049": {
+    "name": "Vintage Washed Denim Trucker Jacket",
+    "category": "Fashion",
+    "local_image": "products/sp-fas-0049.svg",
+    "remote_image": "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-FAS-0050": {
+    "name": "Everyday Cotton Casual Chino Shorts",
+    "category": "Fashion",
+    "local_image": "products/sp-fas-0050.svg",
+    "remote_image": "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-FAS-0051": {
+    "name": "Pack of 3 Combed Cotton Crew T-Shirts",
+    "category": "Fashion",
+    "local_image": "products/sp-fas-0051.svg",
+    "remote_image": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-FAS-0052": {
+    "name": "Brushed Fleece Pullover Hoodie",
+    "category": "Fashion",
+    "local_image": "products/sp-fas-0052.svg",
+    "remote_image": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-HOM-0053": {
+    "name": "Digital Air Fryer 5.5L Rapid Air 1400W",
+    "category": "Home and Kitchen",
+    "local_image": "products/sp-hom-0053.svg",
+    "remote_image": "https://images.unsplash.com/photo-1585515320310-259814833e62?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-HOM-0054": {
+    "name": "15-Bar Espresso & Cappuccino Coffee Machine",
+    "category": "Home and Kitchen",
+    "local_image": "products/sp-hom-0054.svg",
+    "remote_image": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-HOM-0055": {
+    "name": "3-Piece Granite Non-Stick Cookware Set",
+    "category": "Home and Kitchen",
+    "local_image": "products/sp-hom-0055.svg",
+    "remote_image": "https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-HOM-0056": {
+    "name": "Robotic Vacuum Cleaner & Mop with Gyro Navigation",
+    "category": "Home and Kitchen",
+    "local_image": "products/sp-hom-0056.svg",
+    "remote_image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-HOM-0057": {
+    "name": "Stainless Steel Double-Walled Electric Kettle 1.8L",
+    "category": "Home and Kitchen",
+    "local_image": "products/sp-hom-0057.svg",
+    "remote_image": "https://images.unsplash.com/photo-1544816155-12df9643f363?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-HOM-0058": {
+    "name": "14-Piece Stainless Steel Knife Block Set",
+    "category": "Home and Kitchen",
+    "local_image": "products/sp-hom-0058.svg",
+    "remote_image": "https://images.unsplash.com/photo-1593618998160-e34014e67546?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-HOM-0059": {
+    "name": "Ultrasonic Cool Mist Humidifier with Aroma Diffuser 4L",
+    "category": "Home and Kitchen",
+    "local_image": "products/sp-hom-0059.svg",
+    "remote_image": "https://images.unsplash.com/photo-1544816155-12df9643f363?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-HOM-0060": {
+    "name": "16-Piece Ceramic Matte Dinnerware Set for 4",
+    "category": "Home and Kitchen",
+    "local_image": "products/sp-hom-0060.svg",
+    "remote_image": "https://images.unsplash.com/photo-1614088685112-0a760b71a3c8?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-HOM-0061": {
+    "name": "High-Speed Nutri-Blender & Smoothie Maker 1000W",
+    "category": "Home and Kitchen",
+    "local_image": "products/sp-hom-0061.svg",
+    "remote_image": "https://images.unsplash.com/photo-1570222094114-d054a817e56b?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-HOM-0062": {
+    "name": "Contoured Cervical Memory Foam Bed Pillow",
+    "category": "Home and Kitchen",
+    "local_image": "products/sp-hom-0062.svg",
+    "remote_image": "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-HOM-0063": {
+    "name": "Revolving 16-Jar Countertop Spice Rack Tower",
+    "category": "Home and Kitchen",
+    "local_image": "products/sp-hom-0063.svg",
+    "remote_image": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-HOM-0064": {
+    "name": "Automatic Touchless Liquid Soap Dispenser 350ml",
+    "category": "Home and Kitchen",
+    "local_image": "products/sp-hom-0064.svg",
+    "remote_image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-HOM-0065": {
+    "name": "Enameled Cast Iron Dutch Oven Pot with Lid 4.5L",
+    "category": "Home and Kitchen",
+    "local_image": "products/sp-hom-0065.svg",
+    "remote_image": "https://images.unsplash.com/photo-1544816155-12df9643f363?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-BOO-0066": {
+    "name": "The Pragmatic Programmer: 20th Anniversary Edition",
+    "category": "Books",
+    "local_image": "products/sp-boo-0066.svg",
+    "remote_image": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-BOO-0067": {
+    "name": "Designing Data-Intensive Applications",
+    "category": "Books",
+    "local_image": "products/sp-boo-0067.svg",
+    "remote_image": "https://images.unsplash.com/photo-1532012164546-f432f2e37b73?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-BOO-0068": {
+    "name": "Atomic Habits: Proven Way to Build Good Habits",
+    "category": "Books",
+    "local_image": "products/sp-boo-0068.svg",
+    "remote_image": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-BOO-0069": {
+    "name": "Clean Code: A Handbook of Agile Software Craftsmanship",
+    "category": "Books",
+    "local_image": "products/sp-boo-0069.svg",
+    "remote_image": "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-BOO-0070": {
+    "name": "The Psychology of Money: Timeless Lessons on Wealth",
+    "category": "Books",
+    "local_image": "products/sp-boo-0070.svg",
+    "remote_image": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-BOO-0071": {
+    "name": "Deep Work: Rules for Focused Success in a Distracted World",
+    "category": "Books",
+    "local_image": "products/sp-boo-0071.svg",
+    "remote_image": "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-BOO-0072": {
+    "name": "Sapiens: A Brief History of Humankind",
+    "category": "Books",
+    "local_image": "products/sp-boo-0072.svg",
+    "remote_image": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-BOO-0073": {
+    "name": "Python Crash Course, 3rd Edition: A Hands-On Guide",
+    "category": "Books",
+    "local_image": "products/sp-boo-0073.svg",
+    "remote_image": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-BOO-0074": {
+    "name": "The Lean Startup: Innovation Creates Radically Successful Businesses",
+    "category": "Books",
+    "local_image": "products/sp-boo-0074.svg",
+    "remote_image": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-BOO-0075": {
+    "name": "Thinking, Fast and Slow",
+    "category": "Books",
+    "local_image": "products/sp-boo-0075.svg",
+    "remote_image": "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-BOO-0076": {
+    "name": "System Design Interview \u2013 An Insider's Guide",
+    "category": "Books",
+    "local_image": "products/sp-boo-0076.svg",
+    "remote_image": "https://images.unsplash.com/photo-1532012164546-f432f2e37b73?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-BOO-0077": {
+    "name": "Zero to One: Notes on Startups, or How to Build the Future",
+    "category": "Books",
+    "local_image": "products/sp-boo-0077.svg",
+    "remote_image": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-BOO-0078": {
+    "name": "Premium Hardcover Dotted Journal Notebook [A5]",
+    "category": "Books",
+    "local_image": "products/sp-boo-0078.svg",
+    "remote_image": "https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-SPO-0079": {
+    "name": "High-Density Eco-TPE Yoga Mat with Alignment Lines (6mm)",
+    "category": "Sports",
+    "local_image": "products/sp-spo-0079.svg",
+    "remote_image": "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-SPO-0080": {
+    "name": "Adjustable Cast Iron Dumbbell Set 20kg with Connector",
+    "category": "Sports",
+    "local_image": "products/sp-spo-0080.svg",
+    "remote_image": "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-SPO-0081": {
+    "name": "Resistance Bands Loop Exercise Set [5 Levels]",
+    "category": "Sports",
+    "local_image": "products/sp-spo-0081.svg",
+    "remote_image": "https://images.unsplash.com/photo-1598289431512-b97b0917affc?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-SPO-0082": {
+    "name": "Insulated Stainless Steel Sports Bottle 1000ml",
+    "category": "Sports",
+    "local_image": "products/sp-spo-0082.svg",
+    "remote_image": "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-SPO-0083": {
+    "name": "Pro Ball-Bearing Speed Jump Rope for Cardio",
+    "category": "Sports",
+    "local_image": "products/sp-spo-0083.svg",
+    "remote_image": "https://images.unsplash.com/photo-1544816155-12df9643f363?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-SPO-0084": {
+    "name": "Deep Tissue Percussion Muscle Massage Gun",
+    "category": "Sports",
+    "local_image": "products/sp-spo-0084.svg",
+    "remote_image": "https://images.unsplash.com/photo-1544816155-12df9643f363?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-SPO-0085": {
+    "name": "Instant Pop-Up Waterproof Camping Tent (4-Person)",
+    "category": "Sports",
+    "local_image": "products/sp-spo-0085.svg",
+    "remote_image": "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-SPO-0086": {
+    "name": "Trail Running Hydration Backpack with 2L Bladder",
+    "category": "Sports",
+    "local_image": "products/sp-spo-0086.svg",
+    "remote_image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-SPO-0087": {
+    "name": "Pro Synthetic Leather Boxing Gloves 12oz",
+    "category": "Sports",
+    "local_image": "products/sp-spo-0087.svg",
+    "remote_image": "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-SPO-0088": {
+    "name": "Full Carbon Fiber Badminton Racket Twin Pack",
+    "category": "Sports",
+    "local_image": "products/sp-spo-0088.svg",
+    "remote_image": "https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-SPO-0089": {
+    "name": "Official Match FIFA-Standard Football Size 5",
+    "category": "Sports",
+    "local_image": "products/sp-spo-0089.svg",
+    "remote_image": "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-SPO-0090": {
+    "name": "Compression Knee Brace Sleeves [Pair]",
+    "category": "Sports",
+    "local_image": "products/sp-spo-0090.svg",
+    "remote_image": "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-SPO-0091": {
+    "name": "Polarized Sports Cycling & Running Sunglasses",
+    "category": "Sports",
+    "local_image": "products/sp-spo-0091.svg",
+    "remote_image": "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-BEA-0092": {
+    "name": "Hydrating Hyaluronic Acid Serum 2% + B5 (30ml)",
+    "category": "Beauty",
+    "local_image": "products/sp-bea-0092.svg",
+    "remote_image": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-BEA-0093": {
+    "name": "Vitamin C 15% Daily Brightening Face Wash (150ml)",
+    "category": "Beauty",
+    "local_image": "products/sp-bea-0093.svg",
+    "remote_image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-BEA-0094": {
+    "name": "Matte Finish Invisible Gel Sunscreen SPF 50+ PA++++",
+    "category": "Beauty",
+    "local_image": "products/sp-bea-0094.svg",
+    "remote_image": "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-BEA-0095": {
+    "name": "Organic Cold-Pressed Moroccan Argan Hair Oil 100ml",
+    "category": "Beauty",
+    "local_image": "products/sp-bea-0095.svg",
+    "remote_image": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-BEA-0096": {
+    "name": "Authentic Rose Quartz Facial Roller & Gua Sha Set",
+    "category": "Beauty",
+    "local_image": "products/sp-bea-0096.svg",
+    "remote_image": "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-BEA-0097": {
+    "name": "Refreshing Tea Tree & Peppermint Body Wash 300ml",
+    "category": "Beauty",
+    "local_image": "products/sp-bea-0097.svg",
+    "remote_image": "https://images.unsplash.com/photo-1585238342024-78d387f4a707?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-BEA-0098": {
+    "name": "Professional Ionic Fast-Drying Hair Dryer 2000W",
+    "category": "Beauty",
+    "local_image": "products/sp-bea-0098.svg",
+    "remote_image": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-BEA-0099": {
+    "name": "AHA 25% + BHA 2% Exfoliating Peeling Solution (30ml)",
+    "category": "Beauty",
+    "local_image": "products/sp-bea-0099.svg",
+    "remote_image": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-BEA-0100": {
+    "name": "Raw Shea Butter & Cocoa Intense Body Cream 200g",
+    "category": "Beauty",
+    "local_image": "products/sp-bea-0100.svg",
+    "remote_image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-BEA-0101": {
+    "name": "Lengthening & Volumizing Waterproof Mascara 10ml",
+    "category": "Beauty",
+    "local_image": "products/sp-bea-0101.svg",
+    "remote_image": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-BEA-0102": {
+    "name": "Bamboo Charcoal Pore Cleansing Detox Clay Mask",
+    "category": "Beauty",
+    "local_image": "products/sp-bea-0102.svg",
+    "remote_image": "https://images.unsplash.com/photo-1567928815116-24bc294c77ea?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-BEA-0103": {
+    "name": "Complete Beard Grooming & Growth Care Kit",
+    "category": "Beauty",
+    "local_image": "products/sp-bea-0103.svg",
+    "remote_image": "https://images.unsplash.com/photo-1621607512214-68297480165e?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  },
+  "SP-BEA-0104": {
+    "name": "Natural Himalayan Pink Rock Bath Soaking Salts (500g)",
+    "category": "Beauty",
+    "local_image": "products/sp-bea-0104.svg",
+    "remote_image": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800",
+    "fallback_placeholder": "/static/images/placeholder.svg"
+  }
+}

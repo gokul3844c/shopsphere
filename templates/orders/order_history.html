@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Your Orders | ShopSphere.in{% endblock %}
+
+{% block content %}
+<div style="max-width: 1040px; margin: 0 auto;">
+  <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">
+    <a href="{% url 'account_dashboard' %}">Your Account</a> &rsaquo; <strong>Your Orders</strong>
+  </div>
+
+  <h1 style="font-size: 28px; font-weight: 700; margin-bottom: 24px;">Your Orders</h1>
+
+  {% if orders %}
+    {% for o in orders %}
+      <div class="order-history-card">
+        <!-- Order Card Header -->
+        <div class="order-history-header">
+          <div style="display: flex; gap: 32px; flex-wrap: wrap;">
+            <div>
+              <div>ORDER PLACED</div>
+              <strong>{{ o.created_at|date:"d F Y" }}</strong>
+            </div>
+            <div>
+              <div>TOTAL</div>
+              <strong>₹{{ o.total|floatformat:2 }}</strong>
+            </div>
+            <div>
+              <div>SHIP TO</div>
+              <strong>{{ o.recipient_name }}</strong>
+            </div>
+          </div>
+
+          <div style="text-align: right;">
+            <div>ORDER # {{ o.short_order_number }}</div>
+            <a href="{% url 'order_detail' order_number=o.order_number %}" style="font-weight: 600;">
+              View order details &rsaquo;
+            </a>
+          </div>
+        </div>
+
+        <!-- Order Card Body -->
+        <div class="order-history-body">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <div style="font-size: 16px; font-weight: 700;">
+              Status: <span class="status-pill {{ o.status }}">{{ o.get_status_display }}</span>
+            </div>
+            <div style="font-size: 12px; color: var(--text-muted);">
+              Payment: <strong>{{ o.get_payment_method_display }}</strong> ({{ o.get_payment_status_display }})
+            </div>
+          </div>
+
+          <!-- Items in Order -->
+          {% for item in o.items.all %}
+            <div style="display: flex; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--border-subtle); align-items: center;">
+              {% if item.product %}
+                <img src="{{ item.product.display_image }}" alt="{{ item.product_name }}" style="width: 75px; height: 75px; object-fit: contain;">
+              {% endif %}
+              <div style="flex: 1;">
+                <h3 style="font-size: 15px; font-weight: 600; margin-bottom: 4px;">
+                  {% if item.product %}
+                    <a href="{{ item.product.get_absolute_url }}">{{ item.product_name }}</a>
+                  {% else %}
+                    {{ item.product_name }}
+                  {% endif %}
+                </h3>
+                <div style="font-size: 12px; color: var(--text-muted);">
+                  Quantity: {{ item.quantity }} · Unit Price: ₹{{ item.unit_price }}
+                </div>
+              </div>
+
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                {% if item.product %}
+                  <form method="post" action="{% url 'add_to_cart' product_id=item.product.pk %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="quantity" value="1">
+                    <button type="submit" class="btn btn-primary" style="padding: 6px 14px; font-size: 12px;">
+                      Buy it again
+                    </button>
+                  </form>
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+
+  {% else %}
+    <div style="background: #fff; padding: 60px 20px; text-align: center; border-radius: var(--radius-sm); box-shadow: var(--shadow-card);">
+      <div style="font-size: 54px; margin-bottom: 14px;">📦</div>
+      <h2 style="font-size: 22px; font-weight: 700; margin-bottom: 8px;">No orders found</h2>
+      <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">
+        Looks like you haven't placed an order yet. Check out today's featured products.
+      </p>
+      <a href="{% url 'product_list' %}" class="btn btn-primary" style="padding: 10px 24px;">Start Shopping</a>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

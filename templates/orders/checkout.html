@@ -1,0 +1,219 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Checkout | ShopSphere.in{% endblock %}
+
+{% block content %}
+<div style="max-width: 1180px; margin: 0 auto;">
+  <h1 style="font-size: 26px; font-weight: 700; margin-bottom: 24px;">Checkout</h1>
+
+  <form method="post" id="checkout-form">
+    {% csrf_token %}
+
+    <div class="checkout-grid">
+      <!-- Left Column: Steps -->
+      <div>
+        <!-- Step 1: Delivery Address -->
+        <div class="checkout-step-card">
+          <div class="checkout-step-title">
+            <span class="checkout-step-number">1</span>
+            <span>Select a delivery address</span>
+          </div>
+
+          {% if user_addresses %}
+            <div style="margin-bottom: 16px;">
+              {% for addr in user_addresses %}
+                <label class="address-radio-card {% if addr == default_address %}selected{% endif %}" id="addr-card-{{ addr.pk }}">
+                  <input type="radio" name="address_id" value="{{ addr.pk }}" {% if addr == default_address %}checked{% endif %} style="margin-top: 3px;">
+                  <div style="font-size: 13px; line-height: 1.5;">
+                    <strong>{{ addr.recipient_name }}</strong> · {{ addr.phone }}<br>
+                    {{ addr.street }}{% if addr.landmark %}, Near {{ addr.landmark }}{% endif %}, {{ addr.city }}, {{ addr.state }} - <strong>{{ addr.postal_code }}</strong>
+                    {% if addr.is_default %}<span style="color: var(--deal-red); font-weight: 700; font-size: 11px; margin-left: 6px;">[Default]</span>{% endif %}
+                  </div>
+                </label>
+              {% endfor %}
+
+              <label class="address-radio-card" id="addr-card-new">
+                <input type="radio" name="address_id" value="new" style="margin-top: 3px;">
+                <div style="font-size: 13px;">
+                  <strong>+ Add a new delivery address</strong>
+                </div>
+              </label>
+            </div>
+          {% endif %}
+
+          <!-- New Address Form Fields (Visible if no addresses or if user chooses Add New) -->
+          <div id="new-address-fields" style="{% if user_addresses %}display: none;{% endif %} border-top: 1px solid var(--border-subtle); padding-top: 16px;">
+            <h4 style="font-size: 14px; font-weight: 700; margin-bottom: 12px;">Add a new address</h4>
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" name="recipient_name" class="form-control" placeholder="First and last name" value="{{ user.first_name }}">
+            </div>
+            <div class="form-group">
+              <label>Mobile Number</label>
+              <input type="text" name="phone" class="form-control" placeholder="10-digit mobile number">
+            </div>
+            <div class="form-group">
+              <label>Flat, House no., Building, Street</label>
+              <input type="text" name="street" class="form-control" placeholder="Address">
+            </div>
+            <div class="form-group">
+              <label>Landmark (optional)</label>
+              <input type="text" name="landmark" class="form-control" placeholder="E.g. Near Metro Station">
+            </div>
+            <div class="form-row-2">
+              <div class="form-group">
+                <label>Town / City</label>
+                <input type="text" name="city" class="form-control" placeholder="City">
+              </div>
+              <div class="form-group">
+                <label>State</label>
+                <input type="text" name="state" class="form-control" placeholder="State">
+              </div>
+            </div>
+            <div class="form-row-2">
+              <div class="form-group">
+                <label>PIN Code</label>
+                <input type="text" name="postal_code" class="form-control" placeholder="6-digit PIN code">
+              </div>
+              <div class="form-group">
+                <label>Address Type</label>
+                <select name="address_type" class="form-control">
+                  <option value="home">Home (7 AM - 9 PM delivery)</option>
+                  <option value="work">Office (9 AM - 6 PM delivery)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2: Payment Method -->
+        <div class="checkout-step-card">
+          <div class="checkout-step-title">
+            <span class="checkout-step-number">2</span>
+            <span>Select a payment method</span>
+          </div>
+
+          <div class="payment-options-list">
+            <!-- Cash on Delivery -->
+            <label class="payment-option-label">
+              <input type="radio" name="payment_method" value="cod" checked>
+              <div>
+                <strong>Cash on Delivery / Pay on Delivery</strong>
+                <div style="font-size: 12px; color: var(--text-muted);">Pay with cash, UPI or card upon package delivery.</div>
+              </div>
+            </label>
+
+            <!-- Simulated Credit / Debit Card -->
+            <label class="payment-option-label">
+              <input type="radio" name="payment_method" value="card">
+              <div style="width: 100%;">
+                <div style="display: flex; justify-content: space-between;">
+                  <strong>Credit or Debit Card (Simulated Sandbox)</strong>
+                  <span style="font-size: 16px;">💳</span>
+                </div>
+                <div style="font-size: 12px; color: var(--text-muted);">Instant simulated verification for sandbox testing.</div>
+              </div>
+            </label>
+
+            <!-- Simulated UPI -->
+            <label class="payment-option-label">
+              <input type="radio" name="payment_method" value="upi">
+              <div>
+                <strong>UPI / QR (Simulated Instant Pay)</strong>
+                <div style="font-size: 12px; color: var(--text-muted);">Pay using any UPI app like Google Pay, PhonePe, or Paytm.</div>
+              </div>
+            </label>
+
+            <!-- Simulated Net Banking -->
+            <label class="payment-option-label">
+              <input type="radio" name="payment_method" value="netbanking">
+              <div>
+                <strong>Net Banking (Simulated)</strong>
+                <div style="font-size: 12px; color: var(--text-muted);">All major Indian banks supported.</div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Step 3: Review Items & Delivery -->
+        <div class="checkout-step-card">
+          <div class="checkout-step-title">
+            <span class="checkout-step-number">3</span>
+            <span>Review items and shipping</span>
+          </div>
+
+          <div style="font-size: 13px; color: var(--stock-green); font-weight: 700; margin-bottom: 14px;">
+            ✓ Guaranteed Delivery: Tomorrow by 2:00 PM with ShopSphere Prime
+          </div>
+
+          {% for item in items %}
+            <div style="display: flex; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--border-subtle);">
+              <img src="{{ item.product.display_image }}" alt="{{ item.product.name }}" style="width: 60px; height: 60px; object-fit: contain;">
+              <div style="flex: 1;">
+                <div style="font-weight: 600; font-size: 14px;">{{ item.product.name }}</div>
+                <div style="font-size: 12px; color: var(--text-muted);">Qty: {{ item.quantity }} · Sold by: {{ item.product.brand }}</div>
+              </div>
+              <div style="font-weight: 700; font-size: 14px;">
+                ₹{{ item.line_total|floatformat:2 }}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Right Column: Order Summary (Sticky) -->
+      <div class="cart-summary-card">
+        <button type="submit" class="btn btn-buy btn-block" style="padding: 12px; font-size: 14px; margin-bottom: 16px;">
+          Place Your Order
+        </button>
+
+        <p style="font-size: 11px; color: var(--text-muted); line-height: 1.4; margin-bottom: 16px;">
+          By placing your order, you agree to ShopSphere's <a href="#">privacy notice</a> and <a href="#">conditions of use</a>.
+        </p>
+
+        <h3 style="font-size: 16px; font-weight: 700; border-bottom: 1px solid var(--border-subtle); padding-bottom: 8px; margin-bottom: 12px;">
+          Order Summary
+        </h3>
+
+        <div style="font-size: 13px; line-height: 1.8;">
+          <div style="display: flex; justify-content: space-between;">
+            <span>Items:</span>
+            <span>₹{{ subtotal|floatformat:2 }}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <span>Delivery:</span>
+            <span>{% if delivery_fee == 0 %}<strong style="color: var(--stock-green);">FREE</strong>{% else %}₹{{ delivery_fee|floatformat:2 }}{% endif %}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 18px; font-weight: 800; color: #b12704; border-top: 1px solid var(--border-subtle); padding-top: 10px; margin-top: 10px;">
+            <span>Order Total:</span>
+            <span>₹{{ grand_total|floatformat:2 }}</span>
+          </div>
+        </div>
+
+        <div class="secure-transaction-line" style="margin-top: 20px; font-size: 11px;">
+          <span>🔒</span> 256-Bit SSL Encrypted Checkout
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  document.querySelectorAll('input[name="address_id"]').forEach(function(radio) {
+    radio.addEventListener('change', function() {
+      const newFields = document.getElementById('new-address-fields');
+      if (this.value === 'new') {
+        newFields.style.display = 'block';
+      } else {
+        newFields.style.display = 'none';
+      }
+      document.querySelectorAll('.address-radio-card').forEach(c => c.classList.remove('selected'));
+      const card = document.getElementById('addr-card-' + this.value);
+      if (card) card.classList.add('selected');
+    });
+  });
+</script>
+{% endblock %}

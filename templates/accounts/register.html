@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Create Account | ShopSphere{% endblock %}
+
+{% block content %}
+<div class="auth-page-wrapper">
+  <!-- Brand Header -->
+  <div class="auth-brand-center">
+    <div class="brand-logo">
+      Shop<span style="color: var(--deal-red);">Sphere</span><span class="dot" style="color: var(--stock-low);">.</span><span class="in-badge" style="color: var(--deal-red);">in</span>
+    </div>
+  </div>
+
+  <!-- Registration Box -->
+  <div class="auth-box">
+    <h1>Create Account</h1>
+
+    <form method="post" action="{% url 'register' %}">
+      {% csrf_token %}
+
+      {% if form.non_field_errors %}
+        <div class="alert-message error" style="margin-bottom: 14px;">
+          {{ form.non_field_errors.0 }}
+        </div>
+      {% endif %}
+
+      <!-- Your Name -->
+      <div class="form-group">
+        <label for="{{ form.first_name.id_for_label }}">Your name</label>
+        {{ form.first_name }}
+        {% if form.first_name.errors %}
+          <div style="color: var(--deal-red); font-size: 12px; margin-top: 4px;">{{ form.first_name.errors.0 }}</div>
+        {% endif %}
+      </div>
+
+      <!-- Username -->
+      <div class="form-group">
+        <label for="{{ form.username.id_for_label }}">Username</label>
+        {{ form.username }}
+        {% if form.username.errors %}
+          <div style="color: var(--deal-red); font-size: 12px; margin-top: 4px;">{{ form.username.errors.0 }}</div>
+        {% endif %}
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="{{ form.email.id_for_label }}">Email</label>
+        {{ form.email }}
+        {% if form.email.errors %}
+          <div style="color: var(--deal-red); font-size: 12px; margin-top: 4px;">{{ form.email.errors.0 }}</div>
+        {% endif %}
+      </div>
+
+      <!-- Mobile Number -->
+      <div class="form-group">
+        <label for="{{ form.phone.id_for_label }}">Mobile number (optional)</label>
+        {{ form.phone }}
+        {% if form.phone.errors %}
+          <div style="color: var(--deal-red); font-size: 12px; margin-top: 4px;">{{ form.phone.errors.0 }}</div>
+        {% endif %}
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label for="id_reg_password">Password</label>
+        <div class="password-input-wrap">
+          {{ form.password }}
+          <button type="button" class="password-toggle-btn" onclick="togglePassword('id_reg_password', this)">Show</button>
+        </div>
+        <small style="font-size: 11px; color: var(--text-muted); display: block; margin-top: 3px;">
+          ℹ Passwords must be at least 6 characters.
+        </small>
+        {% if form.password.errors %}
+          <div style="color: var(--deal-red); font-size: 12px; margin-top: 4px;">{{ form.password.errors.0 }}</div>
+        {% endif %}
+      </div>
+
+      <!-- Re-enter Password -->
+      <div class="form-group">
+        <label for="id_confirm_password">Re-enter password</label>
+        <div class="password-input-wrap">
+          {{ form.confirm_password }}
+          <button type="button" class="password-toggle-btn" onclick="togglePassword('id_confirm_password', this)">Show</button>
+        </div>
+        {% if form.confirm_password.errors %}
+          <div style="color: var(--deal-red); font-size: 12px; margin-top: 4px;">{{ form.confirm_password.errors.0 }}</div>
+        {% endif %}
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block" style="padding: 10px; font-size: 14px; margin-top: 18px;">
+        Continue
+      </button>
+
+      <p style="font-size: 11px; color: var(--text-muted); margin-top: 18px; line-height: 1.4;">
+        By creating an account, you agree to ShopSphere's <a href="#">Conditions of Use</a> and <a href="#">Privacy Notice</a>.
+      </p>
+
+      <div class="auth-divider">
+        <span>Already have an account?</span>
+      </div>
+
+      <div style="font-size: 13px;">
+        Already have an account? <a href="{% url 'login' %}" style="font-weight: 600;">Sign in ▸</a>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}ShopSphere Shopping Cart{% endblock %}
+
+{% block content %}
+{% if items %}
+  <!-- Free Delivery Alert Banner -->
+  {% if amount_needed_for_free_delivery > 0 %}
+    <div class="free-delivery-progress need-more">
+      <span>ℹ Add ₹{{ amount_needed_for_free_delivery|floatformat:2 }} of eligible items to your order to qualify for <strong>FREE Delivery</strong>.</span>
+    </div>
+  {% else %}
+    <div class="free-delivery-progress">
+      <span>✓ Your order is eligible for <strong>FREE Delivery</strong>. Select this option at checkout.</span>
+    </div>
+  {% endif %}
+
+  <div class="cart-layout-grid">
+    <!-- Left Main Cart Card -->
+    <div class="cart-main-card">
+      <div class="cart-header">
+        <h1>Shopping Cart</h1>
+        <span style="font-size: 13px; color: var(--text-muted);">Price</span>
+      </div>
+
+      <!-- Item Rows -->
+      {% for item in items %}
+        <div class="cart-item-row" id="cart-row-{{ item.product.pk }}">
+          <div class="cart-item-thumb">
+            <a href="{{ item.product.get_absolute_url }}">
+              <img src="{{ item.product.display_image }}" alt="{{ item.product.name }}">
+            </a>
+          </div>
+
+          <div class="cart-item-body">
+            <a href="{{ item.product.get_absolute_url }}" class="cart-item-title">
+              {{ item.product.name }}
+            </a>
+            <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 4px;">
+              Brand: <strong>{{ item.product.brand }}</strong> · Category: {{ item.product.category.name }}
+            </div>
+
+            {% if item.product.stock > 0 %}
+              <div class="cart-item-stock">In Stock</div>
+            {% else %}
+              <div style="color: var(--deal-red); font-size: 12px; font-weight: 700;">Currently Out of Stock</div>
+            {% endif %}
+
+            <div style="font-size: 12px; color: var(--text-muted);">
+              Eligible for FREE Shipping
+            </div>
+
+            <div class="cart-item-controls">
+              <!-- Quantity Stepper -->
+              <div class="qty-control-box">
+                <button type="button" class="qty-btn" data-action="dec" data-product-id="{{ item.product.pk }}">−</button>
+                <span class="qty-display" id="qty-{{ item.product.pk }}">{{ item.quantity }}</span>
+                <button type="button" class="qty-btn" data-action="inc" data-product-id="{{ item.product.pk }}">+</button>
+              </div>
+
+              <span>|</span>
+
+              <!-- Remove Form -->
+              <form method="post" action="{% url 'remove_from_cart' product_id=item.product.pk %}" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit" style="background: none; border: none; color: var(--text-link); font-size: 12px; cursor: pointer; padding: 0;">
+                  Delete
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <div class="cart-item-price" id="line-total-{{ item.product.pk }}">
+            ₹{{ item.line_total|floatformat:2 }}
+          </div>
+        </div>
+      {% endfor %}
+
+      <div style="text-align: right; margin-top: 20px; font-size: 18px;">
+        Subtotal ({{ cart.total_items }} items): <strong class="cart-subtotal-val">₹{{ subtotal|floatformat:2 }}</strong>
+      </div>
+    </div>
+
+    <!-- Right Summary Box (Sticky) -->
+    <div class="cart-summary-card">
+      <div class="cart-subtotal-line">
+        Subtotal ({{ cart.total_items }} items):<br>
+        <strong style="font-size: 24px; color: #b12704;" class="cart-subtotal-val">₹{{ subtotal|floatformat:2 }}</strong>
+      </div>
+
+      {% if total_savings > 0 %}
+        <div style="font-size: 12px; color: var(--stock-green); font-weight: 700; margin-bottom: 14px;">
+          🎉 Total Savings: ₹{{ total_savings|floatformat:2 }}
+        </div>
+      {% endif %}
+
+      <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 16px; border-top: 1px solid var(--border-subtle); padding-top: 10px;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+          <span>Delivery Fee:</span>
+          <span>{% if delivery_fee == 0 %}<strong style="color: var(--stock-green);">FREE</strong>{% else %}₹{{ delivery_fee|floatformat:2 }}{% endif %}</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 14px; color: #0f1111; margin-top: 8px;">
+          <span>Estimated Total:</span>
+          <span id="cart-grand-total">₹{{ grand_total|floatformat:2 }}</span>
+        </div>
+      </div>
+
+      <a href="{% url 'checkout' %}" class="btn btn-primary btn-block" style="padding: 12px; font-size: 14px;">
+        Proceed to Buy
+      </a>
+
+      <div class="secure-transaction-line" style="justify-content: center; margin-top: 14px;">
+        <span>🔒</span> Safe and Secure Shopping Guarantee
+      </div>
+    </div>
+  </div>
+
+{% else %}
+  <!-- Empty Cart State -->
+  <div style="background: #fff; padding: 50px 30px; text-align: center; border-radius: var(--radius-sm); box-shadow: var(--shadow-card); max-width: 800px; margin: 20px auto;">
+    <div style="font-size: 70px; margin-bottom: 16px;">🛒</div>
+    <h1 style="font-size: 26px; font-weight: 700; margin-bottom: 10px;">Your ShopSphere Cart is empty</h1>
+    <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 24px;">
+      Explore today's top deals and discover everyday essentials across all categories.
+    </p>
+    <a href="{% url 'product_list' %}" class="btn btn-primary" style="padding: 12px 30px; font-size: 14px;">
+      Shop Today's Deals
+    </a>
+  </div>
+{% endif %}
+{% endblock %}
